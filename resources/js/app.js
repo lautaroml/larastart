@@ -11,7 +11,7 @@ import Profile from './components/Profile';
 import Users from './components/Users';
 
 import { Form, HasError, AlertError } from 'vform'
-window.form = Form;
+window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
