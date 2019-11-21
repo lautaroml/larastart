@@ -136,11 +136,14 @@
                 axios.get('api/users').then(({data}) => (this.users = data.data));
             },
             createUser() {
+                this.$Progress.start();
                 let users = this.users;
+
                 this.form.post('api/users')
                     .then(function(response) {
                         //users.unshift(response.data);
                     });
+                this.$Progress.finish();
             }
         },
         created() {
