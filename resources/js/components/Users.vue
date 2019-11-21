@@ -137,17 +137,23 @@
             },
             createUser() {
                 this.$Progress.start();
-                let users = this.users;
+                this.form.post('api/users');
+                setTimeout(() => Fire.$emit('afterCreated'), 2000);
+                $('#addNew').modal('hide');
 
-                this.form.post('api/users')
-                    .then(function(response) {
-                        //users.unshift(response.data);
-                    });
+                toast.fire({
+                    icon: 'success',
+                    title: 'User created successfully'
+                });
+
                 this.$Progress.finish();
             }
         },
         created() {
             this.loadUsers();
+            Fire.$on('afterCreated', () => {
+                this.loadUsers();
+            });
         }
     }
 </script>
